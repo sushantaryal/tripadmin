@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
+use App\Http\Controllers\Api\HotelController;
 use App\Http\Controllers\Api\LocationController;
 
 Route::post('login', [\Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::class, 'store']);
@@ -21,3 +22,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::get('airport-locations', [LocationController::class, 'getAirportLocations']);
 Route::get('city-locations', [LocationController::class, 'getCityLocations']);
+
+Route::get('hotel-offers', [HotelController::class, 'getHotelOffers']);
+Route::get('hotel-offers/by-hotel', [HotelController::class, 'getHotelOffersByHotel']);
+Route::get('hotel-offers/{offerId}', [HotelController::class, 'getHotelOffersByOffer']);
+Route::post('booking/hotel-bookings', [HotelController::class, 'storeHotelBookings']);

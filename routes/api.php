@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\HotelController;
+use App\Http\Controllers\Api\FlightController;
 use App\Http\Controllers\Api\LocationController;
 
 Route::post('login', [\Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::class, 'store']);
@@ -27,3 +28,5 @@ Route::get('hotel-offers', [HotelController::class, 'getHotelOffers']);
 Route::get('hotel-offers/by-hotel', [HotelController::class, 'getHotelOffersByHotel']);
 Route::get('hotel-offers/{offerId}', [HotelController::class, 'getHotelOffersByOffer']);
 Route::post('booking/hotel-bookings', [HotelController::class, 'storeHotelBookings']);
+
+Route::get('flight-offers', [FlightController::class, 'getFlightOffers']);

@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
 use App\Services\Amadeus\Hotel;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
+use App\Http\Requests\HotelBookingRequest;
 
 class HotelController extends Controller
 {
@@ -36,8 +36,8 @@ class HotelController extends Controller
         return $offer;
     }
 
-    public function storeHotelBookings(Request $request, Hotel $hotel)
+    public function storeHotelBookings(HotelBookingRequest $request, Hotel $hotel)
     {
-        return $hotel->hotelBookings($request->data);
+        return $hotel->hotelBookings($request->only(['offerId', 'guests', 'payments', 'rooms']));
     }
 }

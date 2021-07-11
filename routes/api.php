@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\UserController;
 use App\Http\Controllers\Api\HotelController;
 use App\Http\Controllers\Api\FlightController;
+use App\Http\Controllers\Api\CountryController;
 use App\Http\Controllers\Api\LocationController;
 
 Route::post('login', [\Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::class, 'store']);
@@ -20,6 +21,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::post('logout', [\Laravel\Fortify\Http\Controllers\AuthenticatedSessionController::class, 'destroy']);
 });
+
+Route::get('countries', [CountryController::class, 'index']);
 
 Route::get('airport-locations', [LocationController::class, 'getAirportLocations']);
 Route::get('city-locations', [LocationController::class, 'getCityLocations']);

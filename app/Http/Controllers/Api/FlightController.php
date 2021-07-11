@@ -13,7 +13,7 @@ class FlightController extends Controller
     {
         // Cache::forget('flights');
         $flights = Cache::remember('flights', now()->addHours(4), function() use ($flight) {
-            return $flight->flightOffers(request()->except(['type', 'origin', 'destination']));
+            return $flight->flightOffers(request()->only(['originLocationCode', 'destinationLocationCode', 'departureDate', 'returnDate', 'adults', 'children', 'infants', 'travelClass']));
         });
         
         return $flights;
@@ -27,5 +27,10 @@ class FlightController extends Controller
         });
         
         return $flightPrice;
+    }
+
+    public function storeFlightBooking(Flight $flight)
+    {
+        return $flight->flightBookings(request()->only(['type', 'flightOffers', 'travelers', 'contacts']));
     }
 }

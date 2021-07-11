@@ -37,4 +37,14 @@ class Flight extends Client
 
         return $response->json();
     }
+
+    public function flightBookings($data)
+    {
+        $response = Http::withToken($this->token)
+        ->post($this->endpoint . '/v1/booking/flight-orders', [
+            'data' => $data
+        ]);
+
+        return $response->json();
+    }
 }

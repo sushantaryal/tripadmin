@@ -34,3 +34,4 @@ Route::post('booking/hotel-bookings', [HotelController::class, 'storeHotelBookin
 
 Route::get('flight-offers', [FlightController::class, 'getFlightOffers']);
 Route::post('flight-offers/pricing', [FlightController::class, 'getFlightOffersPrice']);
+Route::post('booking/flight-bookings', [FlightController::class, 'storeFlightBooking']);

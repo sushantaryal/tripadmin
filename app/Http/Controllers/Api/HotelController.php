@@ -11,29 +11,17 @@ class HotelController extends Controller
 {
     public function getHotelOffers(Hotel $hotel)
     {
-        $hotels = Cache::remember('hotels', now()->addHours(4), function() use ($hotel) {
-            return $hotel->hotelOffers(request()->all());
-        });
-        
-        return $hotels;
+        return $hotel->hotelOffers(request()->all());
     }
 
     public function getHotelOffersByHotel(Hotel $hotel)
     {
-        $hotel = Cache::remember('hotel', now()->addHours(4), function() use ($hotel) {
-            return $hotel->hotelOffersByHotel(request()->all());
-        });
-        
-        return $hotel;
+        return $hotel->hotelOffersByHotel(request()->all());
     }
 
     public function getHotelOffersByOffer($offerId, Hotel $hotel)
     {
-        $offer = Cache::remember('offer', now()->addHours(4), function() use ($offerId, $hotel) {
-            return $hotel->hotelOffersByOffer($offerId);
-        });
-        
-        return $offer;
+        return $hotel->hotelOffersByOffer($offerId);
     }
 
     public function storeHotelBookings(HotelBookingRequest $request, Hotel $hotel)

@@ -30,3 +30,4 @@ Route::get('hotel-offers/{offerId}', [HotelController::class, 'getHotelOffersByO
 Route::post('booking/hotel-bookings', [HotelController::class, 'storeHotelBookings']);
 
 Route::get('flight-offers', [FlightController::class, 'getFlightOffers']);
+Route::post('flight-offers/pricing', [FlightController::class, 'getFlightOffersPrice']);

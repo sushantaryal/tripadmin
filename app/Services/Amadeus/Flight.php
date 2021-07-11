@@ -16,13 +16,25 @@ class Flight extends Client
     {
         $params['currencyCode'] = 'USD';
 
-        // foreach ($oarams as $key => $value) {
-        //     $params[$key] = $value;
-        // }
-
         $response = Http::withToken($this->token)
         ->get($this->endpoint . '/v2/shopping/flight-offers', $params);
 
-        return $response->collect();
+        return $response->json();
+    }
+
+    /**
+     * Get flight offers
+     *
+     * @param $data
+     * @return void
+     */
+    public function flightOffersPrice($data)
+    {
+        $response = Http::withToken($this->token)
+        ->post($this->endpoint . '/v1/shopping/flight-offers/pricing', [
+            'data' => $data
+        ]);
+
+        return $response->json();
     }
 }

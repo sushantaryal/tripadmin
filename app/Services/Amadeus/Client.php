@@ -84,7 +84,7 @@ class Client
         $amadeus = $this->model::first();
 
         if (!$amadeus) {
-            return false;
+            return true;
         }
 
         return !! (now()->timestamp > ($amadeus->auth_at->timestamp + $amadeus->expires_in));
